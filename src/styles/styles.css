@@ -1,156 +1,189 @@
-Color Palette and Variables
 :root {
-  --primary-color: #4a90e2;
-  --secondary-color: #50c878;
-  --accent-color: #ff6b6b;
-  --background-light: #f0f4f8;
-  --text-dark: #2c3e50;
-  --text-light: #ffffff;
-  --card-background: #ffffff;
+  --google-blue: #4285f4;
+  --google-green: #34a853;
+  --google-yellow: #fbbc05;
+  --google-red: #ea4335;
+  --google-light-blue: #d3e3fc;
+  --google-light-green: #d0f0db;
+  --google-light-yellow: #fef5e0;
+  --google-light-red: #fce8e6;
+  --text-primary: #202124; /* Dark grey, almost black */
+  --text-secondary: #5f6368; /* Medium grey */
+  --background-light: #f8f9fa; /* Very light grey */
+  --card-background: #fff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --focus-shadow-color: rgba(66, 133, 244, 0.3); /* Google Blue with transparency */
 }
 
 /* Global Resets and Base Styles */
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   line-height: 1.6;
   background-color: var(--background-light);
-  color: var(--text-dark);
+  color: var(--text-primary);
   margin: 0;
   padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* User List Styles */
 .user-list {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 30px auto; /* Increased top/bottom margin for better spacing */
+  padding: 30px; /* Increased padding */
 }
 
 .user-list h2 {
   text-align: center;
-  color: var(--primary-color);
-  margin-bottom: 30px;
+  color: var(--google-blue);
+  margin-bottom: 40px; /* Increased bottom margin */
+  font-size: 2.2rem; /* Slightly larger heading */
+  font-weight: 500; /* Medium weight for a cleaner look */
+  
 }
 
 .user-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Slightly wider cards */
+  gap: 25px; /* Increased gap */
 }
 
 .user-card {
-  background-color: var(--card-background);
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  background-color: rgba(136, 130, 136, 0.164); /* Lightened card background */
+  border-radius: 8px; /* Slightly less rounded */
+  box-shadow: 0 2px 4px var(--shadow-color); /* Softer shadow */
+  padding: 25px; /* Increased padding */
+  margin-bottom: 25px;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.2s ease; /* Added transform */
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid #ccc; /* Light border for separation */
+}
+
+.user-card:hover {
+  box-shadow: 0 4px 8px var(--shadow-color);
+  transform: translateY(-3px); /* Subtle lift on hover */
 }
 
 .user-card img {
-  width: 120px;
-  height: 120px;
+  width: 150px; /* Slightly smaller image */
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--primary-color);
-  margin-bottom: 15px;
+  border: 3px solid var(--google-blue);
+  margin-bottom: 20px; /* Increased bottom margin */
+  transition: border-color 0.3s ease;
 }
 
 .user-card h3 {
-  margin-bottom: 15px;
-  color: var(--text-dark);
+  margin-bottom: 10px; /* Reduced bottom margin */
+  font-Style: italic;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
-.user-card button {
-  margin: 0 10px;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.user-card .btn-edit {
-  background-color: var(--secondary-color);
-  color: var(--text-light);
-}
-
-.user-card .btn-delete {
-  background-color: var(--accent-color);
-  color: var(--text-light);
-}
 
 /* Pagination Styles */
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
-  gap: 15px;
+  margin-top: 40px; /* Increased top margin */
+  gap: 10px; /* Reduced gap */
 }
 
 .pagination button {
-  background-color: var(--primary-color);
-  color: var(--text-light);
+  /* background-color: var(--google-blue); */
+  /* color: var(--card-background); */
   border: none;
-  padding: 8px 15px;
-  border-radius: 6px;
+  padding: 10px 15px;
+  margin-top: -40px;
+  margin-bottom: 50px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 1px 3px var(--shadow-color);
 }
 
-.pagination button:disabled {
-  background-color: #a0a0a0;
-  cursor: not-allowed;
+.pagination button:hover {
+  box-shadow: 0 2px 5px var(--shadow-color);
 }
+
+.pagination button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--focus-shadow-color);
+}
+
+
 
 .pagination span {
-  color: var(--text-dark);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: -40px;
+  margin-bottom: 50px;
 }
 
 /* Edit User Form Styles */
 .edit-form {
-  max-width: 400px;
-  margin: 50px auto;
-  background-color: var(--card-background);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 450px; /* Slightly wider form */
+  background-color: rgba(136, 130, 136, 0.164); /* Lightened card background */
+  padding: 35px;
+  margin: 130px auto; /* Increased top/bottom margin */
+  border-radius: 8px;
+  box-shadow: 0 4px 30px var(--shadow-color);
 }
 
 .edit-form h2 {
   text-align: center;
-  color: var(--primary-color);
-  margin-bottom: 20px;
+  font-Style: italic;
+  color: var(--google-blue);
+  margin-bottom: 30px; /* Increased bottom margin */
+  font-size: 2rem;
+  font-weight: 500;
 }
 
 .edit-form input {
-  width: 100%;
+  width: calc(100% - 22px); /* Adjust width for padding and border */
   padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #d0d0d0;
-  border-radius: 6px;
-  transition: all 0.3s ease;
+  margin-bottom: 20px; /* Increased bottom margin */
+  border: 1px solid #ced4da; /* Lighter border */
+  border-radius: 4px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
 }
 
 .edit-form input:focus {
-  border-color: var(--primary-color);
+  border-color: var(--google-blue);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+  box-shadow: 0 0 0 2px var(--focus-shadow-color);
 }
 
 .edit-form button {
   width: 100%;
   padding: 12px;
-  background-color: var(--primary-color);
-  color: var(--text-light);
+  background-color: var(--google-blue);
+  color: var(--card-background);
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+.edit-form button:hover {
+  box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.edit-form button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--focus-shadow-color);
 }
 
 /* Login Form Styles */
@@ -162,62 +195,112 @@ body {
   background-color: var(--background-light);
 }
 
+
 .auth-form {
   width: 100%;
-  max-width: 400px;
-  background-color: var(--card-background);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 450px; /* Slightly wider form */
+  background-color: rgba(136, 130, 136, 0.164); /* Lightened card background */
+  padding: 35px; /* Increased padding */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px var(--shadow-color);
 }
+
 
 .auth-form h2 {
   text-align: center;
-  color: var(--primary-color);
-  margin-bottom: 20px;
+  font-Style: italic;
+  color: var(--google-blue);
+  margin-bottom: 30px; /* Increased bottom margin */
+  font-size: 2rem;
+  font-weight: 500;
 }
 
 .auth-form input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #d0d0d0;
-  border-radius: 6px;
-  transition: all 0.3s ease;
+  width: calc(100% - 22px); /* Adjust width for padding and border */
+  padding: 10px;
+  margin-bottom: 20px; /* Increased bottom margin */
+  border: 1px solid #ced4da; /* Lighter border */
+  border-radius: 4px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
 }
 
 .auth-form input:focus {
-  border-color: var(--primary-color);
+  border-color: var(--google-blue);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+  box-shadow: 0 0 0 2px var(--focus-shadow-color);
 }
 
 .auth-form button {
   width: 100%;
   padding: 12px;
-  background-color: var(--primary-color);
-  color: var(--text-light);
+  background-color: var(--google-blue);
+  color: var(--card-background);
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+.auth-form button:hover {
+  box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.auth-form button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--focus-shadow-color);
 }
 
 .error {
-  color: var(--accent-color);
+  color: var(--google-red);
   text-align: center;
   margin-bottom: 15px;
+  font-size: 0.9rem;
 }
+
 
 /* Responsive Adjustments */
 @media screen and (max-width: 768px) {
+  .user-list {
+    padding: 20px;
+  }
+
+  .user-list h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
   .user-cards {
     grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .user-card {
+    padding: 20px;
+  }
+
+  .user-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+  }
+
+  .user-card h3 {
+    font-size: 1.3rem;
   }
 
   .edit-form,
   .auth-form {
-    margin: 20px;
-    padding: 20px;
+    margin: 30px;
+    padding: 25px;
+  }
+
+  .edit-form h2,
+  .auth-form h2 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
   }
 }

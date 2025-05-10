@@ -10,25 +10,36 @@ const EditUser = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const res = await axios.get(`https://reqres.in/api/users/${id}`);
+        const res = await axios.get(`https://reqres.in/api/users/${id}`, {
+          headers: {
+            'x-api-key': 'reqres-free-v1'
+          }
+        });
         setUser(res.data.data);
       } catch (err) {
-        console.error('Error fetching user data');
+        console.error('Error fetching user data:', err.response?.data || err.message);
       }
     };
-
+  
     fetchUserData();
   }, [id]);
-
+  
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`https://reqres.in/api/users/${id}`, user);
+      const res = await axios.put(`https://reqres.in/api/users/${id}`, user, {
+        headers: {
+          'x-api-key': 'reqres-free-v1',
+        },
+      });
+      console.log('Mock update successful:', res.data);
+      alert('User updated but wont reflect on UI.');
       navigate('/users');
     } catch (err) {
-      console.error('Error updating user');
+      console.error('Error updating user:', err.response?.data || err.message);
     }
   };
+  
 
   return (
     <form onSubmit={handleUpdate} className="edit-form">
